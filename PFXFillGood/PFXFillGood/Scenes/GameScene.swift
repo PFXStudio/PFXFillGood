@@ -15,9 +15,10 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
+    private var lastUpdateCompleteTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    
+
     var tileMap:SKTileMapNode!
     var unitMap:SKTileMapNode!
 
@@ -27,11 +28,7 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        guard let width = self.view?.frame.width else {
-            return
-        }
-        
-        let size = CGSize(width: width / 7, height: width / 7)
+        let size = CGSize(width: 50, height: 50)
         guard let groundTileSet = SKTileSet(named: "Ground Tiles") else {
             fatalError("groundTileSet not found")
         }
@@ -40,8 +37,8 @@ class GameScene: SKScene {
             fatalError("Object Tiles Tile Set not found")
         }
         
-        self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.maxCol, rows: TileData.shared.maxRow, tileSize: size)
-        self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.maxCol, rows: TileData.shared.maxRow, tileSize: size)
+        self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
+        self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
         self.viewWillAppear()
         addChild(self.tileMap)
         addChild(self.unitMap)
@@ -61,15 +58,6 @@ class GameScene: SKScene {
             fatalError("Water Tile definition found")
         }
         
-        guard let objectTileSet = SKTileSet(named: "Object Tiles") else {
-            fatalError("Object Tiles Tile Set not found")
-        }
-        
-        let objectTileGroups = objectTileSet.tileGroups
-        guard let duckTile = objectTileGroups.first(where: {$0.name == "Duck"}) else {
-            fatalError("No Duck tile definition found")
-        }
-        
         for y in 0..<TileData.shared.tiles.count {
             let cols = TileData.shared.tiles[y]
             for x in 0..<cols.count {
@@ -82,9 +70,12 @@ class GameScene: SKScene {
                 }
             }
         }
-        
+    }
+    
+    func viewWillDisAppear() {
         if TileData.shared.startPoint.x != -1 {
-            self.unitMap.setTileGroup(duckTile, forColumn: Int(TileData.shared.startPoint.x), row: Int(TileData.shared.startPoint.y))
+            self.unitMap.setTileGroup(nil, forColumn: Int(TileData.shared.startPoint.x), row: Int(TileData.shared.startPoint.y))
+            TileData.shared.tiles[Int(TileData.shared.startPoint.y)][Int(TileData.shared.startPoint.x)] = 1
         }
     }
     
@@ -96,6 +87,36 @@ class GameScene: SKScene {
         }
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        
+        // Initialize _lastUpdateTime if it has not already been
+        if (self.lastUpdateTime == 0) {
+            self.lastUpdateTime = currentTime
+        }
+        
+        // Calculate time since last update
+        let dt = currentTime - self.lastUpdateTime
+        
+        // Update entities
+        for entity in self.entities {
+            entity.update(deltaTime: dt)
+        }
+        
+        self.lastUpdateTime = currentTime
+        
+        if TileData.shared.paths.count <= 0 {
+            return
+        }
+        
+        if currentTime - 0.5 < self.lastUpdateCompleteTime {
+            return
+        }
+        
+        self.lastUpdateCompleteTime = currentTime
+        GameStatus.shared.showCompleted(unitMap: self.unitMap)
+    }
+
     func touchMoved(toPoint pos : CGPoint) {
     }
     
@@ -129,23 +150,4 @@ class GameScene: SKScene {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
-        }
-        
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
-        }
-        
-        self.lastUpdateTime = currentTime
-    }
 }

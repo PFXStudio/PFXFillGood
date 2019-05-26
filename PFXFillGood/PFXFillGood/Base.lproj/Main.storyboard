@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,6 +64,7 @@
                                     <segment title="4"/>
                                     <segment title="5"/>
                                     <segment title="6"/>
+                                    <segment title="7"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
@@ -81,6 +81,8 @@
                                     <segment title="5"/>
                                     <segment title="6"/>
                                     <segment title="7"/>
+                                    <segment title="8"/>
+                                    <segment title="9"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
@@ -185,7 +187,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-z4-Ubd">
-                                <rect key="frame" x="16" y="153" width="343" height="361"/>
+                                <rect key="frame" x="16" y="103" width="343" height="474"/>
                                 <connections>
                                     <segue destination="OKA-Oc-xKC" kind="embed" id="Qdy-n3-cq2"/>
                                 </connections>
@@ -195,14 +197,15 @@
                         <constraints>
                             <constraint firstItem="ZA5-hO-Fxb" firstAttribute="top" secondItem="4x7-v0-bYq" secondAttribute="top" constant="14" id="4Yy-aq-bab"/>
                             <constraint firstItem="Ro4-uJ-gXP" firstAttribute="bottom" secondItem="4x7-v0-bYq" secondAttribute="bottom" id="5NG-M3-JpS"/>
+                            <constraint firstItem="299-Hi-rjR" firstAttribute="top" secondItem="dqg-z4-Ubd" secondAttribute="bottom" constant="8" id="6q2-yy-KEr"/>
                             <constraint firstItem="4x7-v0-bYq" firstAttribute="trailing" secondItem="dqg-z4-Ubd" secondAttribute="trailing" constant="16" id="9Ea-ia-3PI"/>
-                            <constraint firstItem="dqg-z4-Ubd" firstAttribute="centerY" secondItem="e1h-3B-glz" secondAttribute="centerY" id="EvH-pK-tAc"/>
+                            <constraint firstItem="dqg-z4-Ubd" firstAttribute="centerY" secondItem="e1h-3B-glz" secondAttribute="centerY" constant="6.5" id="EvH-pK-tAc"/>
                             <constraint firstItem="299-Hi-rjR" firstAttribute="leading" secondItem="4x7-v0-bYq" secondAttribute="leading" constant="16" id="IgV-a7-7J3"/>
                             <constraint firstItem="4x7-v0-bYq" firstAttribute="trailing" secondItem="299-Hi-rjR" secondAttribute="trailing" constant="16" id="Lag-uX-4gW"/>
                             <constraint firstItem="Ro4-uJ-gXP" firstAttribute="top" secondItem="299-Hi-rjR" secondAttribute="bottom" constant="8" id="TFW-sO-uge"/>
                             <constraint firstItem="ZA5-hO-Fxb" firstAttribute="leading" secondItem="4x7-v0-bYq" secondAttribute="leading" constant="16" id="TXS-kI-KwA"/>
                             <constraint firstItem="Ro4-uJ-gXP" firstAttribute="trailing" secondItem="4x7-v0-bYq" secondAttribute="trailing" id="iiB-yZ-bsO"/>
-                            <constraint firstItem="dqg-z4-Ubd" firstAttribute="top" secondItem="ZA5-hO-Fxb" secondAttribute="bottom" constant="58" id="jqv-Bz-qZo"/>
+                            <constraint firstItem="dqg-z4-Ubd" firstAttribute="top" secondItem="ZA5-hO-Fxb" secondAttribute="bottom" constant="8" id="jqv-Bz-qZo"/>
                             <constraint firstItem="4x7-v0-bYq" firstAttribute="trailing" secondItem="ZA5-hO-Fxb" secondAttribute="trailing" constant="16" id="ka3-Ca-RXa"/>
                             <constraint firstItem="Ro4-uJ-gXP" firstAttribute="leading" secondItem="4x7-v0-bYq" secondAttribute="leading" id="qeF-IA-FwK"/>
                             <constraint firstItem="dqg-z4-Ubd" firstAttribute="leading" secondItem="4x7-v0-bYq" secondAttribute="leading" constant="16" id="vXC-Rs-kwU"/>
@@ -214,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTu-gj-ZBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="134"/>
+            <point key="canvasLocation" x="1045.5999999999999" y="133.5832083958021"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="IcC-wg-4Xv">
@@ -253,7 +256,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDK-Zl-XQ3">
-                                <rect key="frame" x="16" y="153" width="343" height="361"/>
+                                <rect key="frame" x="16" y="103" width="343" height="474"/>
                                 <connections>
                                     <segue destination="OKA-Oc-xKC" kind="embed" id="2Wf-0w-nxt"/>
                                 </connections>
@@ -266,8 +269,9 @@
                             <constraint firstItem="7qo-fl-38T" firstAttribute="trailing" secondItem="0NV-Uc-Zow" secondAttribute="trailing" constant="16" id="AOf-HY-Lbe"/>
                             <constraint firstItem="LDK-Zl-XQ3" firstAttribute="leading" secondItem="7qo-fl-38T" secondAttribute="leading" constant="16" id="DY4-yx-oWv"/>
                             <constraint firstItem="0NV-Uc-Zow" firstAttribute="leading" secondItem="7qo-fl-38T" secondAttribute="leading" constant="16" id="G3x-kI-xjA"/>
-                            <constraint firstItem="LDK-Zl-XQ3" firstAttribute="top" secondItem="eb5-5q-NyX" secondAttribute="bottom" constant="58" id="LBh-9d-VON"/>
-                            <constraint firstItem="LDK-Zl-XQ3" firstAttribute="centerY" secondItem="exE-yX-tGz" secondAttribute="centerY" id="Q0W-oK-3GF"/>
+                            <constraint firstItem="LDK-Zl-XQ3" firstAttribute="top" secondItem="eb5-5q-NyX" secondAttribute="bottom" constant="8" id="LBh-9d-VON"/>
+                            <constraint firstItem="0NV-Uc-Zow" firstAttribute="top" secondItem="LDK-Zl-XQ3" secondAttribute="bottom" constant="8" id="MKu-0O-PUj"/>
+                            <constraint firstItem="LDK-Zl-XQ3" firstAttribute="centerY" secondItem="exE-yX-tGz" secondAttribute="centerY" constant="6.5" id="Q0W-oK-3GF"/>
                             <constraint firstItem="7qo-fl-38T" firstAttribute="trailing" secondItem="eb5-5q-NyX" secondAttribute="trailing" constant="16" id="Vbr-TM-6fh"/>
                             <constraint firstItem="eb5-5q-NyX" firstAttribute="leading" secondItem="7qo-fl-38T" secondAttribute="leading" constant="16" id="ZXZ-1U-MVn"/>
                             <constraint firstItem="dL4-w0-hvx" firstAttribute="bottom" secondItem="7qo-fl-38T" secondAttribute="bottom" id="cJX-fs-ZFX"/>
@@ -282,14 +286,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kad-rR-RAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="134"/>
+            <point key="canvasLocation" x="1717.5999999999999" y="133.5832083958021"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="vex-yi-IPM">
             <objects>
                 <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKA-Oc-xKC" customClass="GameViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="kNB-Hc-4Ye">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="361"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="474"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="iec-cS-sUE"/>
@@ -300,6 +304,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qdy-n3-cq2"/>
+        <segue reference="2Wf-0w-nxt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,4 +15,9 @@ class GameStatus: NSObject {
     func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode) {
         return
     }
+    
+    func showCompleted(unitMap: SKTileMapNode) {
+        return
+
+    }
 }

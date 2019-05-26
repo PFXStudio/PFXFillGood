@@ -12,6 +12,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var scene: GKScene?
     var gameScene: GameScene?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +20,12 @@ class GameViewController: UIViewController {
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
         if let scene = GKScene(fileNamed: "GameScene") {
+            self.scene = scene
             
             // Get the SKScene from the loaded GKScene
             if let sceneNode = scene.rootNode as! GameScene? {
                 self.gameScene = sceneNode
-
+                
                 // Copy gameplay related content over to the scene
                 sceneNode.entities = scene.entities
                 sceneNode.graphs = scene.graphs
@@ -46,7 +48,14 @@ class GameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        gameScene?.viewWillAppear()
+        self.gameScene?.viewWillAppear()
+        self.gameScene?.isPaused = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.gameScene?.viewWillDisAppear()
+        self.gameScene?.isPaused = true
     }
 
     override var shouldAutorotate: Bool {

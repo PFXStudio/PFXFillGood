@@ -13,11 +13,12 @@ import GameplayKit
 struct TileData {
     static var shared = TileData()
 
-    let maxRow = 7
+    let maxRow = 9
     let maxCol = 7
     var row = 1
     var col = 1
     var tiles = [[Int]]()
+    var paths = [CGPoint]()
     
     var startPoint = CGPoint(x: -1, y: -1)
 }
