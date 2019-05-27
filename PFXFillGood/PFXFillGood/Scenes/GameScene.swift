@@ -21,6 +21,7 @@ class GameScene: SKScene {
 
     var tileMap:SKTileMapNode!
     var unitMap:SKTileMapNode!
+    var arrowMap:SKTileMapNode!
 
     override func sceneDidLoad() {
 
@@ -37,11 +38,17 @@ class GameScene: SKScene {
             fatalError("Object Tiles Tile Set not found")
         }
         
+        guard let arrowTileSet = SKTileSet(named: "Arrow Tiles") else {
+            fatalError("arrowTileSet Tiles Tile Set not found")
+        }
+        
         self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
         self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
+        self.arrowMap = SKTileMapNode(tileSet: arrowTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
         self.viewWillAppear()
         addChild(self.tileMap)
         addChild(self.unitMap)
+        addChild(self.arrowMap)
     }
     
     func viewWillAppear() {
@@ -76,6 +83,7 @@ class GameScene: SKScene {
         for row in 0..<TileData.shared.row {
             for col in 0..<TileData.shared.col {
                 self.unitMap.setTileGroup(nil, forColumn: col, row: row)
+                self.arrowMap.setTileGroup(nil, forColumn: col, row: row)
             }
         }
         
@@ -126,7 +134,7 @@ class GameScene: SKScene {
         }
         
         self.lastUpdateCompleteTime = currentTime
-        GameStatus.shared.showCompleted(unitMap: self.unitMap)
+        GameStatus.shared.showCompleted(unitMap: self.unitMap, arrowMap: self.arrowMap)
     }
 
     func touchMoved(toPoint pos : CGPoint) {

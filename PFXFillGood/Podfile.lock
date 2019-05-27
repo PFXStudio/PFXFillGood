@@ -1,0 +1,20 @@
+PODS:
+  - paper-onboarding (6.1.3)
+  - ProgressHUD (2.60)
+
+DEPENDENCIES:
+  - paper-onboarding
+  - ProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - paper-onboarding
+    - ProgressHUD
+
+SPEC CHECKSUMS:
+  paper-onboarding: 47ded9ede6ae9dd7ec135dddd8bd3e170b79d799
+  ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
+
+PODFILE CHECKSUM: d5dbe5734517819244415ad405fbf0fbe2166a84
+
+COCOAPODS: 1.5.3
