@@ -21,4 +21,12 @@ struct TileData {
     var paths = [CGPoint]()
     
     var startPoint = CGPoint(x: -1, y: -1)
+    
+    mutating func initializeStartPoint() {
+        if startPoint.x != -1 {
+            tiles[Int(startPoint.y)][Int(startPoint.x)] = 1
+        }
+        
+        startPoint = CGPoint(x: -1, y: -1)
+    }
 }

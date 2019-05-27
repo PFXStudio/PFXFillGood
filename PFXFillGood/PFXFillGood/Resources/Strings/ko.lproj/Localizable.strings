@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  PFXFillGood
+
+  Created by succorer on 27/05/2019.
+  Copyright © 2019 PFXStudio. All rights reserved.
+*/
+
+"successPaths" = "성공.";
+"setStartPoint" = "시작 타일을 선택 해 주세요.";
+"searchingPaths" = "경로를 탐색 중 입니다.";
+"failPaths" = "경로가 없습니다.";

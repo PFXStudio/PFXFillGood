@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class StartViewController: UIViewController {
 
+    var gameViewController: GameViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +40,11 @@ class StartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let gameViewController = segue.destination as? GameViewController else {
+            return
+        }
+
+        self.gameViewController = gameViewController
     }
     
     func recursivePath(parentTiles: [[Int]], parentPaths: [CGPoint]) -> (Bool, [CGPoint]) {
@@ -130,80 +137,75 @@ class StartViewController: UIViewController {
     
     @IBAction func touchedStartButton(_ sender: Any) {
         if TileData.shared.startPoint.x == -1 {
+            ProgressHUD.showError(NSLocalizedString("setStartPoint", comment: ""))
             return
         }
         
-        let tiles = TileData.shared.tiles
-        var paths = [CGPoint]()
-        paths.append(TileData.shared.startPoint)
-        DispatchQueue.global().async {
-            let result = self.recursivePath(parentTiles: tiles, parentPaths: paths)
-            if result.0 == true {
-                TileData.shared.paths = result.1
-            }
-        }
-    }
-
-    /*
-    @IBAction func touchedStartButton(_ sender: Any) {
-        if TileData.shared.startPoint.x == -1 {
-            return
-        }
-        
-        let graph = Graph(TileData.shared.row * TileData.shared.col)
+        /*
+        // check tile
+        var blockTileCount = 0
         for row in 0..<TileData.shared.row {
             for col in 0..<TileData.shared.col {
-                var value = TileData.shared.tiles[row][col]
-                if value == 0 {
+                var left = 0
+                var right = 0
+                var top = 0
+                var bottom = 0
+                let val = TileData.shared.tiles[row][col]
+                if val == 0 {
                     continue
                 }
                 
-                let index = (row * TileData.shared.row) + col
                 var x = col - 1
                 if x >= 0 {
-                    value = TileData.shared.tiles[row][x]
-                    if value == 1 {
-                        let left = (row * TileData.shared.row) + x
-                        graph.addEdge(left: index, right: left)
-                    }
+                    left = TileData.shared.tiles[row][x]
                 }
                 
                 x = col + 1
                 if x < TileData.shared.col {
-                    value = TileData.shared.tiles[row][x]
-                    if value == 1 {
-                        let right = (row * TileData.shared.row) + x
-                        graph.addEdge(left: index, right: right)
-                    }
+                    right = TileData.shared.tiles[row][x]
                 }
                 
                 var y = row - 1
                 if y >= 0 {
-                    value = TileData.shared.tiles[y][col]
-                    if value == 1 {
-                        let down = (y * TileData.shared.row) + col
-                        graph.addEdge(left: index, right: down)
-                    }
+                    bottom = TileData.shared.tiles[y][col]
                 }
-
+                
                 y = row + 1
                 if y < TileData.shared.row {
-                    value = TileData.shared.tiles[y][col]
-                    if value == 1 {
-                        let up = (y * TileData.shared.row) + col
-                        graph.addEdge(left: index, right: up)
+                    top = TileData.shared.tiles[y][col]
+                }
+
+                if left + right + bottom + top == 1 {
+                    blockTileCount = blockTileCount + 1
+                    if blockTileCount > 2 {
+                        ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
+                        return
                     }
                 }
             }
         }
+        */
         
-        let visits = graph.visitDfs(0)
-        for val in visits {
-            let y = val / TileData.shared.row
-            let x = val % TileData.shared.row
-            print("x : \(x) y : \(y)")
+        self.gameViewController?.gameScene?.clearUnit()
+        let tiles = TileData.shared.tiles
+        var paths = [CGPoint]()
+        paths.append(TileData.shared.startPoint)
+        ProgressHUD.show(NSLocalizedString("searchingPaths", comment: ""), interaction: false)
+        DispatchQueue.global().async {
+            let result = self.recursivePath(parentTiles: tiles, parentPaths: paths)
+            if result.0 == true {
+                ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    // TODO : 광고
+                    TileData.shared.paths = result.1
+                })
+            }
+            else {
+                // no paths
+                DispatchQueue.main.async {
+                    ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
+                }
+            }
         }
     }
- 
- */
 }

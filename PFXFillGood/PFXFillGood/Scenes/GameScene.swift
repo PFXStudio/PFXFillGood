@@ -72,10 +72,22 @@ class GameScene: SKScene {
         }
     }
     
-    func viewWillDisAppear() {
-        if TileData.shared.startPoint.x != -1 {
-            self.unitMap.setTileGroup(nil, forColumn: Int(TileData.shared.startPoint.x), row: Int(TileData.shared.startPoint.y))
-            TileData.shared.tiles[Int(TileData.shared.startPoint.y)][Int(TileData.shared.startPoint.x)] = 1
+    func clearUnit() {
+        for row in 0..<TileData.shared.row {
+            for col in 0..<TileData.shared.col {
+                self.unitMap.setTileGroup(nil, forColumn: col, row: row)
+            }
+        }
+        
+        TileData.shared.paths.removeAll()
+    }
+    
+    func clearTile() {
+        for row in 0..<TileData.shared.row {
+            for col in 0..<TileData.shared.col {
+                self.tileMap.setTileGroup(nil, forColumn: col, row: row)
+                TileData.shared.tiles[row][col] = 0
+            }
         }
     }
     

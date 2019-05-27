@@ -54,8 +54,10 @@ class GameViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.gameScene?.viewWillDisAppear()
+        self.gameScene?.clearUnit()
         self.gameScene?.isPaused = true
+
+        TileData.shared.initializeStartPoint()
     }
 
     override var shouldAutorotate: Bool {

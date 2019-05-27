@@ -1,0 +1,72 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0NV-Uc-Zow"; */
+"0NV-Uc-Zow.normalTitle" = "Start";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "299-Hi-rjR"; */
+"299-Hi-rjR.normalTitle" = "Next";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[0] = "1"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[0]" = "1";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[1] = "2"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[1]" = "2";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[2] = "3"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[2]" = "3";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[3] = "4"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[3]" = "4";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[4] = "5"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[4]" = "5";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[5] = "6"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[5]" = "6";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[6] = "7"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[6]" = "7";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[7] = "8"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[7]" = "8";
+
+/* Class = "UISegmentedControl"; U3g-PX-80R.segmentTitles[8] = "9"; ObjectID = "U3g-PX-80R"; */
+"U3g-PX-80R.segmentTitles[8]" = "9";
+
+/* Class = "UILabel"; text = "Row"; ObjectID = "Uge-5n-bOh"; */
+"Uge-5n-bOh.text" = "Row";
+
+/* Class = "UILabel"; text = "Row"; ObjectID = "X3Q-AM-6cw"; */
+"X3Q-AM-6cw.text" = "Select Tile Row/Col Count.";
+
+/* Class = "UILabel"; text = "Row"; ObjectID = "ZA5-hO-Fxb"; */
+"ZA5-hO-Fxb.text" = "Select Empty Tile.";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[0] = "1"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[0]" = "1";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[1] = "2"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[1]" = "2";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[2] = "3"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[2]" = "3";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[3] = "4"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[3]" = "4";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[4] = "5"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[4]" = "5";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[5] = "6"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[5]" = "6";
+
+/* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[6] = "7"; ObjectID = "bjv-fl-EJr"; */
+"bjv-fl-EJr.segmentTitles[6]" = "7";
+
+/* Class = "UILabel"; text = "Row"; ObjectID = "eb5-5q-NyX"; */
+"eb5-5q-NyX.text" = "Select Start Tile.";
+
+/* Class = "UILabel"; text = "Col"; ObjectID = "trm-6B-ABs"; */
+"trm-6B-ABs.text" = "Col";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vRx-Mg-6ip"; */
+"vRx-Mg-6ip.normalTitle" = "Next";

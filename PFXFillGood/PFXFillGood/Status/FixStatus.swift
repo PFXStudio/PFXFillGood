@@ -42,5 +42,4 @@ class FixStatus: GameStatus {
         
         return
     }
-
 }

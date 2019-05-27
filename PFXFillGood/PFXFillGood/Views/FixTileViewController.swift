@@ -19,8 +19,6 @@ class FixTileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         GameStatus.shared = FixStatus()
-        TileData.shared.startPoint = CGPoint(x: -1, y: -1)
-        TileData.shared.paths.removeAll()
     }
 
     // MARK: - Navigation

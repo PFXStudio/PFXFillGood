@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  PFXFillGood
+
+  Created by succorer on 27/05/2019.
+  Copyright © 2019 PFXStudio. All rights reserved.
+*/
+
+"successPaths" = "Success.";
+"setStartPoint" = "Set start tile.";
+"searchingPaths" = "Searching paths.";
+"failPaths" = "Not found paths.";
