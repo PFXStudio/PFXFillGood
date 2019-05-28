@@ -85,7 +85,6 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
         let viewController = UIStoryboard.init(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "MainNavigationController")
         self .present(viewController, animated: false, completion: nil)
 
-// TODO :
         UserDefaults.standard.set(true, forKey: DefineStrings.kCompletedGuide)
     }
     

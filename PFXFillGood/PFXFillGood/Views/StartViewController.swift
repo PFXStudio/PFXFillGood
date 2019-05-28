@@ -37,21 +37,6 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         TileData.shared.paths = self.results
     }
 
-    func checkReady() {
-        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 0.3) {
-            if self.interstitial.isReady == true {
-                self.interstitial.present(fromRootViewController: self)
-                DispatchQueue.main.async {
-                }
-                
-                return
-            }
-            else {
-                self.checkReady()
-            }
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         GameStatus.shared = StartStatus()
@@ -185,8 +170,14 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             if result.0 == true {
                 ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.interstitial.present(fromRootViewController: self)
-                    self.results = result.1
+                    if self.interstitial.isReady == true {
+                        self.interstitial.present(fromRootViewController: self)
+                        self.results = result.1
+                    }
+                    else {
+                        // 광고 로딩 실패!
+                        TileData.shared.paths = result.1
+                    }
                 })
             }
             else {
