@@ -100,6 +100,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="lmO-kB-jMV"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="S11-4h-vSP" kind="embed" id="gZA-Jy-k8h"/>
+                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tile Row/Col Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3Q-AM-6cw">
                                 <rect key="frame" x="16" y="78" width="343" height="17"/>
@@ -181,6 +184,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bz0-pk-rqe"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="S11-4h-vSP" kind="embed" id="J36-hh-g7U"/>
+                                </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="299-Hi-rjR">
                                 <rect key="frame" x="16" y="549" width="343" height="30"/>
@@ -248,6 +254,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3u3-I2-0Ls"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="S11-4h-vSP" kind="embed" id="zUI-Ef-Zez"/>
+                                </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NV-Uc-Zow">
                                 <rect key="frame" x="16" y="549" width="343" height="30"/>
@@ -302,22 +311,53 @@
             </objects>
             <point key="canvasLocation" x="1717.5999999999999" y="133.5832083958021"/>
         </scene>
+        <!--Full Banner View Controller-->
+        <scene sceneID="0ND-zP-rRn">
+            <objects>
+                <viewController storyboardIdentifier="FullBannerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zD8-ra-FlJ" customClass="FullBannerViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BgV-ae-RcG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tdB-4C-pPW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJK-CN-g4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2425" y="263"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="vex-yi-IPM">
             <objects>
                 <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKA-Oc-xKC" customClass="GameViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="kNB-Hc-4Ye">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="438"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="361"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="iec-cS-sUE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYR-zP-N9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="816"/>
+            <point key="canvasLocation" x="1020" y="774"/>
+        </scene>
+        <!--Bottom Banner View Controller-->
+        <scene sceneID="6VZ-4W-66M">
+            <objects>
+                <viewController storyboardIdentifier="BottomBannerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S11-4h-vSP" customClass="BottomBannerViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qga-f8-ttK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gdt-r8-1lG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oO8-Em-Ywt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="658"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Wf-0w-nxt"/>
+        <segue reference="gZA-Jy-k8h"/>
+        <segue reference="ts3-O2-pet"/>
     </inferredMetricsTieBreakers>
 </document>
