@@ -18,6 +18,7 @@ class TileCountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("tileCountTitle", comment: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -334,7 +334,7 @@
             <objects>
                 <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKA-Oc-xKC" customClass="GameViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="kNB-Hc-4Ye">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="468"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="391"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="iec-cS-sUE"/>
@@ -360,7 +360,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zUI-Ef-Zez"/>
-        <segue reference="2Wf-0w-nxt"/>
+        <segue reference="gZA-Jy-k8h"/>
+        <segue reference="ts3-O2-pet"/>
     </inferredMetricsTieBreakers>
 </document>

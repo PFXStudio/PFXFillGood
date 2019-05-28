@@ -17,13 +17,20 @@ class BottomBannerViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.bannerView != nil {
+            self.bannerView.removeFromSuperview()
+        }
+        
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        
         addBannerViewToView(bannerView)
-        
         bannerView.adUnitID = "ca-app-pub-6807878951364224/8418672303"
         bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        let request = GADRequest()
+        bannerView.load(request)
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

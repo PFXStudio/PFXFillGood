@@ -39,7 +39,7 @@
 "X3Q-AM-6cw.text" = "타일의 가로/세로 수를 선택 해 주세요.";
 
 /* Class = "UILabel"; text = "Row"; ObjectID = "ZA5-hO-Fxb"; */
-"ZA5-hO-Fxb.text" = "빈 타일을 선택 해 주세요.";
+"ZA5-hO-Fxb.text" = "공백 타일을 선택 해 주세요.";
 
 /* Class = "UISegmentedControl"; bjv-fl-EJr.segmentTitles[0] = "1"; ObjectID = "bjv-fl-EJr"; */
 "bjv-fl-EJr.segmentTitles[0]" = "1";

@@ -19,13 +19,15 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("startTitle", comment: "")
         interstitial = createAndLoadInterstitial()
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6807878951364224/2401371946")
         interstitial.delegate = self
-        interstitial.load(GADRequest())
+        let request = GADRequest()
+        interstitial.load(request)
         return interstitial
     }
     
