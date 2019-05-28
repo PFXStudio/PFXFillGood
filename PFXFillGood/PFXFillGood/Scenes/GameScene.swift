@@ -26,9 +26,14 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
+        self.backgroundColor = UIColor.white
     }
     
     override func didMove(to view: SKView) {
+        self.viewWillAppear()
+    }
+    
+    func viewWillAppear() {
         let size = CGSize(width: 50, height: 50)
         guard let groundTileSet = SKTileSet(named: "Ground Tiles") else {
             fatalError("groundTileSet not found")
@@ -42,20 +47,6 @@ class GameScene: SKScene {
             fatalError("arrowTileSet Tiles Tile Set not found")
         }
         
-        self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
-        self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
-        self.arrowMap = SKTileMapNode(tileSet: arrowTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
-        self.viewWillAppear()
-        addChild(self.tileMap)
-        addChild(self.unitMap)
-        addChild(self.arrowMap)
-    }
-    
-    func viewWillAppear() {
-        guard let groundTileSet = SKTileSet(named: "Ground Tiles") else {
-            fatalError("groundTileSet not found")
-        }
-        
         let groundTileGroups = groundTileSet.tileGroups
         guard let grassTile = groundTileGroups.first(where: {$0.name == "Grass Tile"}) else {
             fatalError("Grass Tile definition found")
@@ -65,6 +56,25 @@ class GameScene: SKScene {
             fatalError("Water Tile definition found")
         }
         
+        if self.tileMap != nil {
+            self.tileMap.removeFromParent()
+        }
+        
+        if self.unitMap != nil {
+            self.unitMap.removeFromParent()
+        }
+        
+        if self.arrowMap != nil {
+            self.arrowMap.removeFromParent()
+        }
+        
+        self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
+        self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
+        self.arrowMap = SKTileMapNode(tileSet: arrowTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
+        addChild(self.tileMap)
+        addChild(self.unitMap)
+        addChild(self.arrowMap)
+
         for y in 0..<TileData.shared.tiles.count {
             let cols = TileData.shared.tiles[y]
             for x in 0..<cols.count {
@@ -94,7 +104,6 @@ class GameScene: SKScene {
         for row in 0..<TileData.shared.row {
             for col in 0..<TileData.shared.col {
                 self.tileMap.setTileGroup(nil, forColumn: col, row: row)
-                TileData.shared.tiles[row][col] = 0
             }
         }
     }
@@ -134,6 +143,10 @@ class GameScene: SKScene {
         }
         
         self.lastUpdateCompleteTime = currentTime
+        if GameStatus.shared.isKind(of: CompleteStatus.self) == false {
+            GameStatus.shared = CompleteStatus()
+        }
+        
         GameStatus.shared.showCompleted(unitMap: self.unitMap, arrowMap: self.arrowMap)
     }
 
@@ -147,7 +160,7 @@ class GameScene: SKScene {
             return
         }
         
-        GameStatus.shared.touchUp(row: row, col: col, tileMap: self.tileMap, unitMap: self.unitMap)
+        GameStatus.shared.touchUp(row: row, col: col, tileMap: self.tileMap, unitMap: self.unitMap, arrowMap: self.arrowMap)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

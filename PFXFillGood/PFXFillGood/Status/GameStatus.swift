@@ -12,7 +12,7 @@ import SpriteKit
 class GameStatus: NSObject {
     static var shared = GameStatus()
 
-    func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode) {
+    func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         return
     }
     

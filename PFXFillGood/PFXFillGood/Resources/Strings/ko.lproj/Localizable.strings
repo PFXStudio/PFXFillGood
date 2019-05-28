@@ -10,3 +10,7 @@
 "setStartPoint" = "시작 타일을 선택 해 주세요.";
 "searchingPaths" = "경로를 탐색 중 입니다.";
 "failPaths" = "경로가 없습니다.";
+
+"guideContents1" = "Fill 게임을 아시나요?\nFill 게임은 최고의 퍼즐 게임입니다.";
+"guideContents2" = "게임 방법은 모든 타일을 지나가야 하는 게임입니다.";
+"guideContents3" = "OMG....\n이런 문제를 쉽게 해결 하기 위해 이 어플을 제공합니다.";

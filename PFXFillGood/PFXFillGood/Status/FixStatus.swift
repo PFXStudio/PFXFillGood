@@ -10,8 +10,8 @@ import UIKit
 import SpriteKit
 
 class FixStatus: GameStatus {
-    override func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode) {
-        super.touchUp(row: row, col: col, tileMap: tileMap, unitMap: unitMap)
+    override func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
+        super.touchUp(row: row, col: col, tileMap: tileMap, unitMap: unitMap, arrowMap: arrowMap)
         if col >= TileData.shared.col || row >= TileData.shared.row {
             print("over tile")
             return

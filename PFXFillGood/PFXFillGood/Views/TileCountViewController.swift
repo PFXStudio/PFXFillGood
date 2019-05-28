@@ -12,33 +12,39 @@ class TileCountViewController: UIViewController {
 
     @IBOutlet weak var colSegmentedControl: UISegmentedControl!
     @IBOutlet weak var rowSegmentedControl: UISegmentedControl!
-    
+    var gameViewController: GameViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        GameStatus.shared = TileCountStatus()
+        self.gameViewController?.changedTileCount(row: self.rowSegmentedControl.selectedSegmentIndex + 1, col: self.colSegmentedControl.selectedSegmentIndex + 1)
+    }
+    
+    @IBAction func changedColSegment(_ sender: Any) {
+        self.gameViewController?.changedTileCount(row: self.rowSegmentedControl.selectedSegmentIndex + 1, col: self.colSegmentedControl.selectedSegmentIndex + 1)
+    }
+    
+    @IBAction func changedRowSegment(_ sender: Any) {
+        self.gameViewController?.changedTileCount(row: self.rowSegmentedControl.selectedSegmentIndex + 1, col: self.colSegmentedControl.selectedSegmentIndex + 1)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        TileData.shared.col = self.colSegmentedControl.selectedSegmentIndex + 1
-        TileData.shared.row = self.rowSegmentedControl.selectedSegmentIndex + 1
-
-        TileData.shared.tiles = Array(repeating: Array(repeating: 0, count: TileData.shared.maxCol), count: TileData.shared.maxRow)
-        for row in 0..<TileData.shared.maxRow {
-            for col in 0..<TileData.shared.maxCol {
-                if col >= TileData.shared.col || row >= TileData.shared.row {
-                    TileData.shared.tiles[row][col] = 0
-                    continue
-                }
-                
-                TileData.shared.tiles[row][col] = 1
-            }
+        guard let gameViewController = segue.destination as? GameViewController else {
+            return
         }
+        
+        self.gameViewController = gameViewController
+
     }
 }

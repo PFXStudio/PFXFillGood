@@ -39,8 +39,8 @@ class GameViewController: UIViewController {
                     
                     view.ignoresSiblingOrder = true
                     
-                    view.showsFPS = true
-                    view.showsNodeCount = true
+//                    view.showsFPS = true
+//                    view.showsNodeCount = true
                 }
             }
         }
@@ -58,6 +58,15 @@ class GameViewController: UIViewController {
         self.gameScene?.isPaused = true
 
         TileData.shared.initializeStartPoint()
+    }
+    
+    func changedTileCount(row: Int, col: Int) {
+        self.gameScene?.clearTile()
+        TileData.shared.row = row
+        TileData.shared.col = col
+        TileData.shared.tiles = Array(repeating: Array(repeating: 1, count:col), count: row)
+        
+        self.gameScene?.viewWillAppear()
     }
 
     override var shouldAutorotate: Bool {
