@@ -14,7 +14,8 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
 
     var interstitial: GADInterstitial!
     var gameViewController: GameViewController?
-    var results = [CGPoint]()
+    var results: [CGPoint]?
+    var timer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +37,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
     }
     
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        TileData.shared.paths = self.results
+        TileData.shared.paths = self.results!
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +69,11 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         self.gameViewController = gameViewController
     }
     
-    func recursivePath(parentTiles: [[Int]], parentPaths: [CGPoint]) -> (Bool, [CGPoint]) {
+    func recursivePath(parentTiles: [[Int]], direction: (Int), parentPaths: [CGPoint]) -> (Bool, [CGPoint]) {
+        if self.results != nil {
+            return (false, [])
+        }
+
         var tiles = parentTiles
         guard let start = parentPaths.last else {
             return (false, [])
@@ -83,12 +88,13 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         }
         
         tiles[startY][startX] = 0
-        var x = startX - 1
-        if x >= 0 {
+        
+        var x = startX + (-1 * direction)
+        if 0 <= x && x < TileData.shared.col {
             value = TileData.shared.tiles[startY][x]
             if value == 1 {
                 paths.append(CGPoint(x: x, y: startY))
-                let result = recursivePath(parentTiles: tiles, parentPaths: paths)
+                let result = recursivePath(parentTiles: tiles, direction: direction, parentPaths: paths)
                 if result.0 == false {
                     paths.removeLast()
                 }
@@ -98,12 +104,27 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             }
         }
         
-        x = startX + 1
-        if x < TileData.shared.col {
+        var y = startY + (-1 * direction)
+        if 0 <= y && y < TileData.shared.row {
+            value = TileData.shared.tiles[y][startX]
+            if value == 1 {
+                paths.append(CGPoint(x: startX, y: y))
+                let result = recursivePath(parentTiles: tiles, direction: direction, parentPaths: paths)
+                if result.0 == false {
+                    paths.removeLast()
+                }
+                else {
+                    return result
+                }
+            }
+        }
+        
+        x = startX + (1 * direction)
+        if 0 <= x && x < TileData.shared.col {
             value = TileData.shared.tiles[startY][x]
             if value == 1 {
                 paths.append(CGPoint(x: x, y: startY))
-                let result = recursivePath(parentTiles: tiles, parentPaths: paths)
+                let result = recursivePath(parentTiles: tiles, direction: direction, parentPaths: paths)
                 if result.0 == false {
                     paths.removeLast()
                 }
@@ -113,27 +134,12 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             }
         }
         
-        var y = startY - 1
-        if y >= 0 {
+        y = startY + (1 * direction)
+        if 0 <= y && y < TileData.shared.row {
             value = TileData.shared.tiles[y][startX]
             if value == 1 {
                 paths.append(CGPoint(x: startX, y: y))
-                let result = recursivePath(parentTiles: tiles, parentPaths: paths)
-                if result.0 == false {
-                    paths.removeLast()
-                }
-                else {
-                    return result
-                }
-            }
-        }
-        
-        y = startY + 1
-        if y < TileData.shared.row {
-            value = TileData.shared.tiles[y][startX]
-            if value == 1 {
-                paths.append(CGPoint(x: startX, y: y))
-                let result = recursivePath(parentTiles: tiles, parentPaths: paths)
+                let result = recursivePath(parentTiles: tiles, direction: direction, parentPaths: paths)
                 if result.0 == false {
                     paths.removeLast()
                 }
@@ -162,77 +168,81 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             return
         }
         
+        if TileData.shared.row * TileData.shared.col > 40 {
+            let alertController = UIAlertController(title: NSLocalizedString("alertTitle", comment: ""), message: NSLocalizedString("longTimeSearch", comment: ""), preferredStyle: .alert)
+            
+            let startAction = UIAlertAction(title: NSLocalizedString("buttonStart", comment: ""), style: .default) { (action) in
+                self.executeSearch()
+            }
+            
+            let cancelAction = UIAlertAction(title: NSLocalizedString("buttonCancel", comment: ""), style: .cancel) { (action) in
+            }
+            
+            alertController.addAction(startAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true)
+            return
+        }
+
+        self.executeSearch()
+    }
+    
+    func executeSearch() {
         self.gameViewController?.gameScene?.clearUnit()
+        self.results = nil
         let tiles = TileData.shared.tiles
         var paths = [CGPoint]()
         paths.append(TileData.shared.startPoint)
-        ProgressHUD.show(NSLocalizedString("searchingPaths", comment: ""), interaction: false)
-        DispatchQueue.global().async {
-            let result = self.recursivePath(parentTiles: tiles, parentPaths: paths)
-            if result.0 == true {
-                ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    if self.interstitial.isReady == true {
-                        self.interstitial.present(fromRootViewController: self)
-                        self.results = result.1
-                    }
-                    else {
-                        // 광고 로딩 실패!
-                        TileData.shared.paths = result.1
-                    }
-                })
-            }
-            else {
-                // no paths
-                DispatchQueue.main.async {
-                    ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
-                }
-            }
+        
+        ProgressHUD.show(String(format: NSLocalizedString("searchingPaths", comment: ""), 0), interaction: false)
+        /*
+         DispatchQueue.global().async {
+         let result = self.recursivePath(parentTiles: tiles, direction: -1, parentPaths: paths)
+         let endDate = Date()
+         let interval = endDate.timeIntervalSince(startDate)
+         print("work time : \(interval)")
+         
+         self.completed(result: result.0, pointPaths: result.1)
+         }
+         */
+        var second = 0
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            second = second + 1
+            ProgressHUD.show(String(format: NSLocalizedString("searchingPaths", comment: ""), second), interaction: false)
         }
         
-        /*
-        // check tile
-        var blockTileCount = 0
-        for row in 0..<TileData.shared.row {
-            for col in 0..<TileData.shared.col {
-                var left = 0
-                var right = 0
-                var top = 0
-                var bottom = 0
-                let val = TileData.shared.tiles[row][col]
-                if val == 0 {
-                    continue
+        DispatchQueue.global().async {
+            let result = self.recursivePath(parentTiles: tiles, direction: 1, parentPaths: paths)
+            self.completed(result: result.0, pointPaths: result.1)
+        }
+    }
+    
+    func completed(result:(Bool), pointPaths:([CGPoint])) {
+        self.timer?.invalidate()
+        self.timer = nil
+        if result == true {
+            ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                if self.interstitial.isReady == true {
+                    self.interstitial.present(fromRootViewController: self)
+                    self.results = pointPaths
                 }
-                
-                var x = col - 1
-                if x >= 0 {
-                    left = TileData.shared.tiles[row][x]
+                else {
+                    // 광고 로딩 실패!
+                    self.results = pointPaths
+                    TileData.shared.paths = pointPaths
                 }
-                
-                x = col + 1
-                if x < TileData.shared.col {
-                    right = TileData.shared.tiles[row][x]
-                }
-                
-                var y = row - 1
-                if y >= 0 {
-                    bottom = TileData.shared.tiles[y][col]
-                }
-                
-                y = row + 1
-                if y < TileData.shared.row {
-                    top = TileData.shared.tiles[y][col]
-                }
-
-                if left + right + bottom + top == 1 {
-                    blockTileCount = blockTileCount + 1
-                    if blockTileCount > 2 {
-                        ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
-                        return
-                    }
-                }
+            })
+        }
+        else {
+            if self.results != nil {
+                return
+            }
+            // no paths
+            DispatchQueue.main.async {
+                ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
             }
         }
-        */
     }
 }

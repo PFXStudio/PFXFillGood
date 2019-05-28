@@ -8,7 +8,7 @@
 
 "successPaths" = "성공.";
 "setStartPoint" = "시작 타일을 선택 해 주세요.";
-"searchingPaths" = "경로를 탐색 중 입니다.";
+"searchingPaths" = "경로를 탐색 중 입니다.(%d초)";
 "failPaths" = "경로가 없습니다.";
 
 "guideContents1" = "Fill 게임을 아시나요?\nFill 게임은 최고의 퍼즐 게임입니다.";
@@ -17,3 +17,7 @@
 "tileCountTitle" = "타일 수";
 "fixTileTitle" = "공백 타일";
 "startTitle" = "시작";
+"longTimeSearch" = "경로 탐색 시간이 오래 걸릴 수 있습니다.\n탐색 하시겠습니까?";
+"alertTitle" = "알림";
+"buttonCancel" = "취소";
+"buttonStart" = "탐색";

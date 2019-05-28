@@ -24,20 +24,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMain" translatesAutoresizingMaskIntoConstraints="NO" id="1h4-fp-xxk">
-                                <rect key="frame" x="121" y="115" width="132" height="132"/>
+                                <rect key="frame" x="121" y="135" width="132" height="132"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="q1P-xw-RPk"/>
-                                    <constraint firstAttribute="width" constant="132" id="xbz-jF-9ib"/>
+                                    <constraint firstAttribute="height" constant="132" id="2rU-hc-dGM"/>
+                                    <constraint firstAttribute="width" constant="132" id="r7m-hi-hn3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1h4-fp-xxk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="121" id="3Zl-8c-TgO"/>
-                            <constraint firstItem="f0F-8b-kuG" firstAttribute="top" secondItem="1h4-fp-xxk" secondAttribute="bottom" constant="76" id="D76-5F-rin"/>
                             <constraint firstItem="f0F-8b-kuG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Glo-0K-86C"/>
-                            <constraint firstItem="1h4-fp-xxk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="cqR-nT-WST"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1h4-fp-xxk" secondAttribute="trailing" constant="122" id="wqo-jp-kAu"/>
+                            <constraint firstItem="1h4-fp-xxk" firstAttribute="centerX" secondItem="f0F-8b-kuG" secondAttribute="centerX" id="Th4-qu-csH"/>
+                            <constraint firstItem="f0F-8b-kuG" firstAttribute="top" secondItem="1h4-fp-xxk" secondAttribute="bottom" constant="56" id="gAl-hi-qDI"/>
                             <constraint firstItem="f0F-8b-kuG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zJG-w7-vus"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -49,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconMain" width="256" height="256"/>
+        <image name="iconMain" width="120" height="120"/>
     </resources>
 </document>

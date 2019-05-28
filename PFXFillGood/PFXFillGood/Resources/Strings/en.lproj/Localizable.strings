@@ -8,7 +8,7 @@
 
 "successPaths" = "Success.";
 "setStartPoint" = "Set start tile.";
-"searchingPaths" = "Searching paths.";
+"searchingPaths" = "Searching paths.(%ds)";
 "failPaths" = "Not found paths.";
 
 "guideContents1" = "Do you know fill game?\nFill game is best of puzzle game.";
@@ -17,3 +17,7 @@
 "tileCountTitle" = "Tile Count";
 "fixTileTitle" = "Empty Tile";
 "startTitle" = "Start";
+"longTimeSearch" = "Maybe need long searching time";
+"alertTitle" = "Notice";
+"buttonCancel" = "Cancel";
+"buttonStart" = "Search";

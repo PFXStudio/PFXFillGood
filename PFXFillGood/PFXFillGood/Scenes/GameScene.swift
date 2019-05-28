@@ -147,7 +147,7 @@ class GameScene: SKScene {
             GameStatus.shared = CompleteStatus()
         }
         
-        GameStatus.shared.showCompleted(unitMap: self.unitMap, arrowMap: self.arrowMap)
+        GameStatus.shared.showCompleted(scene: self, unitMap: self.unitMap, arrowMap: self.arrowMap)
     }
 
     func touchMoved(toPoint pos : CGPoint) {

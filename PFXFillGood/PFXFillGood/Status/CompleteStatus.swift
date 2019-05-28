@@ -13,6 +13,10 @@ class CompleteStatus: GameStatus {
     var lastPoint = CGPoint(x: -1, y: -1)
     var lastDirection = ""
     var lastArrowName = ""
+    
+    override init() {
+        super.init()
+    }
 
     override func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         super.touchUp(row: row, col: col, tileMap: tileMap, unitMap: unitMap, arrowMap: arrowMap)
@@ -20,7 +24,7 @@ class CompleteStatus: GameStatus {
         return
     }
     
-    override func showCompleted(unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
+    override func showCompleted(scene: SKScene, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         if TileData.shared.paths.count <= 0 {
             return
         }
