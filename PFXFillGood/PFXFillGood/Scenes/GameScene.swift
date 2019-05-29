@@ -68,6 +68,8 @@ class GameScene: SKScene {
             self.arrowMap.removeFromParent()
         }
         
+        self.removeAllChildren()
+        
         self.tileMap = SKTileMapNode(tileSet: groundTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
         self.unitMap = SKTileMapNode(tileSet: objectTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)
         self.arrowMap = SKTileMapNode(tileSet: arrowTileSet, columns: TileData.shared.col, rows: TileData.shared.row, tileSize: size)

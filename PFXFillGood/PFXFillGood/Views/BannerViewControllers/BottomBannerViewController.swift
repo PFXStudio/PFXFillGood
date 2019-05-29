@@ -36,22 +36,10 @@ class BottomBannerViewController: UIViewController {
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": bannerView]));
+        
+        // align bannerView from the top and bottom
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": bannerView]));
     }
 
     /*

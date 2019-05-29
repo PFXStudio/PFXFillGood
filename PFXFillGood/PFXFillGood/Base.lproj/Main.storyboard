@@ -282,7 +282,7 @@
                                     <constraint firstAttribute="height" constant="30" id="yF9-4N-9j5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <state key="normal" title="Start">
+                                <state key="normal" title="Search">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -334,7 +334,7 @@
             <objects>
                 <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKA-Oc-xKC" customClass="GameViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="kNB-Hc-4Ye">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="391"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="468"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="iec-cS-sUE"/>
@@ -360,7 +360,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gZA-Jy-k8h"/>
-        <segue reference="ts3-O2-pet"/>
+        <segue reference="zUI-Ef-Zez"/>
+        <segue reference="2Wf-0w-nxt"/>
     </inferredMetricsTieBreakers>
 </document>

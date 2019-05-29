@@ -9,6 +9,7 @@
 import UIKit
 import StoreKit
 import paper_onboarding
+import ProgressHUD
 
 class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate, SKStoreProductViewControllerDelegate {
 
@@ -31,26 +32,13 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
             return
         }
         
-        self.checkInstalled()
-    }
-    
-    func checkInstalled() {
-        let app = UIApplication.shared
-        let url = URL(string: "fill://")!
-        if app.canOpenURL(url) {
-            self.showMain()
-            return
-        }
-
-        print("App in not installed. Go to AppStore")
-        // Not installed Alert -> go to appstore
-        let alertController = UIAlertController(title: NSLocalizedString("alertTitle", comment: ""), message: NSLocalizedString("needFillInstall", comment: ""), preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("alertTitle", comment: ""), message: NSLocalizedString("playFill", comment: ""), preferredStyle: .alert)
         
-        let installAction = UIAlertAction(title: NSLocalizedString("buttonInstall", comment: ""), style: .default) { (action) in
+        let installAction = UIAlertAction(title: NSLocalizedString("buttonStore", comment: ""), style: .default) { (action) in
             self.openStoreProductWithiTunesItemIdentifier(identifier: "1091456207")
         }
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("buttonCancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("buttonDid", comment: ""), style: .cancel) { (action) in
             self.showMain()
         }
         
@@ -64,8 +52,10 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
         let storeViewController = SKStoreProductViewController()
         storeViewController.delegate = self
         
+        ProgressHUD.show(NSLocalizedString("loading", comment: ""))
         let parameters = [ SKStoreProductParameterITunesItemIdentifier : identifier]
         storeViewController.loadProduct(withParameters: parameters) { [weak self] (loaded, error) -> Void in
+            ProgressHUD.dismiss()
             if loaded {
                 // Parent class of self is UIViewContorller
                 self?.present(storeViewController, animated: true, completion: nil)

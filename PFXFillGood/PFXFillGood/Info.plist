@@ -24,11 +24,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.gamestart.fill</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fill</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

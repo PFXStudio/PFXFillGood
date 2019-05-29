@@ -6,18 +6,26 @@
   Copyright © 2019 PFXStudio. All rights reserved.
 */
 
-"successPaths" = "Success.";
+// Views
 "setStartPoint" = "Set start tile.";
-"searchingPaths" = "Searching paths.(%ds)";
-"failPaths" = "Not found paths.";
-
 "guideContents1" = "Do you know fill game?\nFill game is best of puzzle game.";
 "guideContents2" = "if you pass the all tiles then complete stage.";
 "guideContents3" = "OMG....\nThis application is solve this problem.";
 "tileCountTitle" = "Tile Count";
 "fixTileTitle" = "Empty Tile";
-"startTitle" = "Start";
-"longTimeSearch" = "Maybe need long searching time";
+"startTitle" = "Search";
+
+// Alert & Buttons
 "alertTitle" = "Notice";
 "buttonCancel" = "Cancel";
-"buttonStart" = "Search";
+"buttonSearch" = "Search";
+"buttonDid" = "I did.";
+"buttonStore" = "Go AppStore";
+"playFill" = "Did you play Fill game?";
+"longTimeSearch" = "Maybe need long searching time";
+
+// progressHUD
+"loading" = "Loading...";
+"successPaths" = "Success.";
+"failPaths" = "Not found paths.";
+"searchingPaths" = "Searching paths.(%ds)";

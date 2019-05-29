@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 import GoogleMobileAds
 import ProgressHUD
 
@@ -171,7 +172,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         if TileData.shared.row * TileData.shared.col > 40 {
             let alertController = UIAlertController(title: NSLocalizedString("alertTitle", comment: ""), message: NSLocalizedString("longTimeSearch", comment: ""), preferredStyle: .alert)
             
-            let startAction = UIAlertAction(title: NSLocalizedString("buttonStart", comment: ""), style: .default) { (action) in
+            let startAction = UIAlertAction(title: NSLocalizedString("buttonSearch", comment: ""), style: .default) { (action) in
                 self.executeSearch()
             }
             
@@ -223,6 +224,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         self.timer = nil
         if result == true {
             ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 if self.interstitial.isReady == true {
                     self.interstitial.present(fromRootViewController: self)
@@ -242,6 +244,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             // no paths
             DispatchQueue.main.async {
                 ProgressHUD.showError(NSLocalizedString("failPaths", comment: ""))
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
         }
     }
