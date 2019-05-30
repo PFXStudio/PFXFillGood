@@ -22,9 +22,12 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
         self.paperView.delegate = self
         
         if UserDefaults.standard.bool(forKey: DefineStrings.kCompletedGuide) == true {
+            self.view.isHidden = true
             self.showMain()
             return
         }
+
+        self.view.isHidden = false
     }
     
     func onboardingWillTransitonToIndex(_ index: Int) {

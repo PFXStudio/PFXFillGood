@@ -22,7 +22,7 @@ class CompleteStatus: GameStatus {
         
         if let cursorNode = self.cursorNode {
             cursorNode.name = "cursor"
-            cursorNode.fillColor = UIColor.red
+            cursorNode.fillColor = UIColor(red:255/255, green:102/255, blue:102/255, alpha:1.0)
             cursorNode.alpha = 0
         }
     }

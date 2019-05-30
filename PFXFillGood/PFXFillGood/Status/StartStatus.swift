@@ -12,6 +12,14 @@ import SpriteKit
 class StartStatus: GameStatus {
     override func touchUp(row: Int, col: Int, tileMap: SKTileMapNode, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         super.touchUp(row: row, col: col, tileMap: tileMap, unitMap: unitMap, arrowMap: arrowMap)
+        if row >= TileData.shared.tiles.count {
+            return
+        }
+        
+        if col >= TileData.shared.tiles[row].count {
+            return
+        }
+        
         if TileData.shared.tiles[row][col] == 0 {
             return
         }

@@ -10,11 +10,13 @@ import UIKit
 
 class FixTileViewController: UIViewController {
 
+    @IBOutlet weak var nextButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("fixTileTitle", comment: "")
+        self.nextButton.roundLayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {

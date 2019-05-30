@@ -13,6 +13,7 @@ import ProgressHUD
 
 class StartViewController: UIViewController, GADInterstitialDelegate {
 
+    @IBOutlet weak var searchButton: UIButton!
     var interstitial: GADInterstitial!
     var gameViewController: GameViewController?
     var results: [CGPoint]?
@@ -23,6 +24,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("startTitle", comment: "")
         interstitial = createAndLoadInterstitial()
+        self.searchButton.roundLayer()
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {

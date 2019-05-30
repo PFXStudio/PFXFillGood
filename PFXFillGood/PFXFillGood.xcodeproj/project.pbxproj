@@ -38,6 +38,7 @@
 		D26629CD229BD53C00ECBC16 /* DefineStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26629CC229BD53C00ECBC16 /* DefineStrings.swift */; };
 		D26629CF229BD55800ECBC16 /* DefineColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26629CE229BD55700ECBC16 /* DefineColors.swift */; };
 		D2DD44CD229D0B3B004B4B95 /* BottomBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD44CC229D0B3B004B4B95 /* BottomBannerViewController.swift */; };
+		D2E4B98F229F5FEC002D9E3D /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4B98E229F5FEC002D9E3D /* UIView+Custom.m */; };
 		D2ED17A5229BB97100DABA1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2ED17A7229BB97100DABA1E /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,9 @@
 		D26629CC229BD53C00ECBC16 /* DefineStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefineStrings.swift; sourceTree = "<group>"; };
 		D26629CE229BD55700ECBC16 /* DefineColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefineColors.swift; sourceTree = "<group>"; };
 		D2DD44CC229D0B3B004B4B95 /* BottomBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBannerViewController.swift; sourceTree = "<group>"; };
+		D2E4B98C229F5FEB002D9E3D /* PFXFillGood-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PFXFillGood-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2E4B98D229F5FEC002D9E3D /* UIView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Custom.h"; sourceTree = "<group>"; };
+		D2E4B98E229F5FEC002D9E3D /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
 		D2ED17A1229BB94700DABA1E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		D2ED17A2229BB94700DABA1E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D2ED17A6229BB97100DABA1E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		6D10DA7C2299C222006D186F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6DAD1FA32299363A00C62BC5 /* Main.storyboard */,
 				D2DD44CB229D0B1F004B4B95 /* BannerViewControllers */,
 				D26629C6229BD51300ECBC16 /* GuideViewControllers */,
 				6D10DA7D2299C250006D186F /* TileCountViewController.swift */,
@@ -211,6 +216,7 @@
 		6DAD1F982299363A00C62BC5 /* PFXFillGood */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4B98B229F5FD7002D9E3D /* Categories */,
 				D26629CB229BD52900ECBC16 /* Commons */,
 				6D10DA842299CE79006D186F /* Status */,
 				6DAD1FCD22993DEA00C62BC5 /* Datas */,
@@ -218,7 +224,6 @@
 				6D10DA7C2299C222006D186F /* Views */,
 				6D10DA792299AC0A006D186F /* Resources */,
 				6DAD1F992299363A00C62BC5 /* AppDelegate.swift */,
-				6DAD1FA32299363A00C62BC5 /* Main.storyboard */,
 				6DAD1FA62299363A00C62BC5 /* Assets.xcassets */,
 				6DAD1FA82299363A00C62BC5 /* LaunchScreen.storyboard */,
 				6DAD1FAB2299363A00C62BC5 /* Info.plist */,
@@ -307,6 +312,16 @@
 				D2DD44CC229D0B3B004B4B95 /* BottomBannerViewController.swift */,
 			);
 			path = BannerViewControllers;
+			sourceTree = "<group>";
+		};
+		D2E4B98B229F5FD7002D9E3D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D2E4B98D229F5FEC002D9E3D /* UIView+Custom.h */,
+				D2E4B98E229F5FEC002D9E3D /* UIView+Custom.m */,
+				D2E4B98C229F5FEB002D9E3D /* PFXFillGood-Bridging-Header.h */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		D2ED179F229BB25000DABA1E /* Strings */ = {
@@ -399,6 +414,7 @@
 				TargetAttributes = {
 					6DAD1F952299363A00C62BC5 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					6DAD1FAF2299363A00C62BC5 = {
 						CreatedOnToolsVersion = 10.1;
@@ -565,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E4B98F229F5FEC002D9E3D /* UIView+Custom.m in Sources */,
 				6D10DA802299C33E006D186F /* FixTileViewController.swift in Sources */,
 				6D10DA862299CED1006D186F /* GameStatus.swift in Sources */,
 				6D10DA822299C370006D186F /* StartViewController.swift in Sources */,
@@ -772,6 +789,7 @@
 			baseConfigurationReference = F80EBED316440AAF6504C548 /* Pods-PFXFillGood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7HRPNLU6RA;
 				INFOPLIST_FILE = PFXFillGood/Info.plist;
@@ -782,6 +800,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfxstudio.PFXFillGood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PFXFillGood/Categories/PFXFillGood-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -792,6 +812,7 @@
 			baseConfigurationReference = 910A39BF97D2B1E3EC71A449 /* Pods-PFXFillGood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7HRPNLU6RA;
 				INFOPLIST_FILE = PFXFillGood/Info.plist;
@@ -802,6 +823,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfxstudio.PFXFillGood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PFXFillGood/Categories/PFXFillGood-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

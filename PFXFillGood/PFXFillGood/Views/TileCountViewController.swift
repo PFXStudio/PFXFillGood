@@ -10,6 +10,7 @@ import UIKit
 
 class TileCountViewController: UIViewController {
 
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var colSegmentedControl: UISegmentedControl!
     @IBOutlet weak var rowSegmentedControl: UISegmentedControl!
     var gameViewController: GameViewController?
@@ -19,6 +20,7 @@ class TileCountViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("tileCountTitle", comment: "")
+        self.nextButton.roundLayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {

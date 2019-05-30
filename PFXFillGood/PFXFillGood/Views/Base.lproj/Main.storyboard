@@ -165,6 +165,7 @@
                     <navigationItem key="navigationItem" id="I1D-rK-NJF"/>
                     <connections>
                         <outlet property="colSegmentedControl" destination="bjv-fl-EJr" id="vgF-GK-vlc"/>
+                        <outlet property="nextButton" destination="vRx-Mg-6ip" id="sW5-js-AW1"/>
                         <outlet property="rowSegmentedControl" destination="U3g-PX-80R" id="qqR-Ku-zuu"/>
                     </connections>
                 </viewController>
@@ -238,6 +239,9 @@
                         <viewLayoutGuide key="safeArea" id="4x7-v0-bYq"/>
                     </view>
                     <navigationItem key="navigationItem" id="b6s-1r-lKh"/>
+                    <connections>
+                        <outlet property="nextButton" destination="299-Hi-rjR" id="YIQ-o9-CQX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTu-gj-ZBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -309,6 +313,9 @@
                         <viewLayoutGuide key="safeArea" id="7qo-fl-38T"/>
                     </view>
                     <navigationItem key="navigationItem" id="7mE-bz-PGU"/>
+                    <connections>
+                        <outlet property="searchButton" destination="0NV-Uc-Zow" id="1iX-3d-cfz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kad-rR-RAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
