@@ -10,6 +10,7 @@ import UIKit
 
 class TileCountViewController: UIViewController {
 
+    @IBOutlet weak var infoBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var colSegmentedControl: UISegmentedControl!
     @IBOutlet weak var rowSegmentedControl: UISegmentedControl!
@@ -21,8 +22,24 @@ class TileCountViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("tileCountTitle", comment: "")
         self.nextButton.roundLayer()
+        
+        if UserDefaults.standard.bool(forKey: DefineStrings.kCompletedGuide) == false {
+            self.showGuide()
+            return
+        }
     }
     
+    @IBAction func touchedInfoBarButtonItem(_ sender: UIBarButtonItem) {
+        self.showGuide()
+    }
+    
+    func showGuide() {
+        let viewController = UIStoryboard.init(name: "Guide", bundle: nil) .instantiateViewController(withIdentifier: "GuideViewController")
+        self .present(viewController, animated: false, completion: nil)
+        
+        UserDefaults.standard.set(true, forKey: DefineStrings.kCompletedGuide)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         GameStatus.shared = TileCountStatus()

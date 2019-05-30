@@ -20,14 +20,6 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
         // Do any additional setup after loading the view.
     
         self.paperView.delegate = self
-        
-        if UserDefaults.standard.bool(forKey: DefineStrings.kCompletedGuide) == true {
-            self.view.isHidden = true
-            self.showMain()
-            return
-        }
-
-        self.view.isHidden = false
     }
     
     func onboardingWillTransitonToIndex(_ index: Int) {
@@ -42,7 +34,7 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
         }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("buttonDid", comment: ""), style: .cancel) { (action) in
-            self.showMain()
+            self.dismiss(animated: false, completion: nil)
         }
         
         alertController.addAction(installAction)
@@ -65,20 +57,14 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
                 return
             }
             
-            self?.showMain()
+            self?.dismiss(animated: false, completion: nil)
         }
     }
     
     func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
-        viewController.dismiss(animated: true, completion: nil)
-        self.showMain()
-    }
-    
-    func showMain() {
-        let viewController = UIStoryboard.init(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "MainNavigationController")
-        self .present(viewController, animated: false, completion: nil)
-
-        UserDefaults.standard.set(true, forKey: DefineStrings.kCompletedGuide)
+        viewController.dismiss(animated: true) {
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
     func onboardingItemsCount() -> Int {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yPD-Xc-kwE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -162,9 +162,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Gd-dE-yhn"/>
                     </view>
-                    <navigationItem key="navigationItem" id="I1D-rK-NJF"/>
+                    <navigationItem key="navigationItem" id="I1D-rK-NJF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="E9f-vF-BUv">
+                            <connections>
+                                <action selector="touchedInfoBarButtonItem:" destination="Yca-78-p5z" id="DF6-HQ-1kz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="colSegmentedControl" destination="bjv-fl-EJr" id="vgF-GK-vlc"/>
+                        <outlet property="infoBarButtonItem" destination="E9f-vF-BUv" id="GM8-JA-uU7"/>
                         <outlet property="nextButton" destination="vRx-Mg-6ip" id="sW5-js-AW1"/>
                         <outlet property="rowSegmentedControl" destination="U3g-PX-80R" id="qqR-Ku-zuu"/>
                     </connections>
@@ -341,7 +348,7 @@
             <objects>
                 <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OKA-Oc-xKC" customClass="GameViewController" customModule="PFXFillGood" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="kNB-Hc-4Ye">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="468"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="391"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="iec-cS-sUE"/>
@@ -367,7 +374,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zUI-Ef-Zez"/>
-        <segue reference="2Wf-0w-nxt"/>
+        <segue reference="gZA-Jy-k8h"/>
+        <segue reference="ts3-O2-pet"/>
     </inferredMetricsTieBreakers>
 </document>
