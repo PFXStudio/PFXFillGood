@@ -8,9 +8,10 @@
 
 // Views
 "setStartPoint" = "Set start tile.";
-"guideContents1" = "Do you know fill game?\nFill game is best of puzzle game.";
+"guideContents1" = "Can you pass the all visit path?";
 "guideContents2" = "if you pass the all tiles then complete stage.";
 "guideContents3" = "OMG....\nThis application is solve this problem.";
+
 "tileCountTitle" = "Tile Count";
 "fixTileTitle" = "Empty Tile";
 "startTitle" = "Search";

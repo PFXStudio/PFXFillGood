@@ -50,6 +50,8 @@ class GameViewController: UIViewController {
         super.viewWillAppear(animated)
         self.gameScene?.viewWillAppear()
         self.gameScene?.isPaused = false
+        
+        print("viewwillappear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +60,7 @@ class GameViewController: UIViewController {
         self.gameScene?.isPaused = true
 
         TileData.shared.initializeStartPoint()
+        print("viewWillDisappear")
     }
     
     func changedTileCount(row: Int, col: Int) {

@@ -55,8 +55,6 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             
             log = log + "\n"
         }
-        
-        print(log)
     }
 
     // MARK: - Navigation
@@ -228,6 +226,8 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
             ProgressHUD.showSuccess(NSLocalizedString("successPaths", comment: ""))
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.searchButton.isEnabled = false
+                self.searchButton.alpha = 0.5
                 if self.interstitial.isReady == true {
                     self.interstitial.present(fromRootViewController: self)
                     self.results = pointPaths

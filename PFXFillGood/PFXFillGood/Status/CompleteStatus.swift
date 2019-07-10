@@ -134,7 +134,7 @@ class CompleteStatus: GameStatus {
             }
  */
             recursiveEnding(index: 0, nodes: nodes)
-            GameStatus.shared = StartStatus()
+//            GameStatus.shared = StartStatus()
         }
         
         return
