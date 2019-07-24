@@ -15,6 +15,8 @@ class CompleteStatus: GameStatus {
     var lastArrowName = ""
     var cursorNode : SKShapeNode?
     var cursorNodes: [SKShapeNode]?
+    private var lastUpdateTime : TimeInterval = 0
+    private var lastUpdateCompleteTime : TimeInterval = 0
 
     override init() {
         super.init()
@@ -33,11 +35,26 @@ class CompleteStatus: GameStatus {
         return
     }
     
-    override func showCompleted(scene: SKScene, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
+    override func showCompleted(_ currentTime: TimeInterval, scene: SKScene, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         if TileData.shared.paths.count <= 0 {
             return
         }
         
+        if (self.lastUpdateTime == 0) {
+            self.lastUpdateTime = currentTime
+        }
+        
+        // Calculate time since last update
+        let dt = currentTime - self.lastUpdateTime
+        
+        self.lastUpdateTime = currentTime
+        
+        if currentTime - 0.5 < self.lastUpdateCompleteTime {
+            return
+        }
+        
+        self.lastUpdateCompleteTime = currentTime
+
         guard let objectTileSet = SKTileSet(named: "Object Tiles") else {
             fatalError("Object Tiles Tile Set not found")
         }

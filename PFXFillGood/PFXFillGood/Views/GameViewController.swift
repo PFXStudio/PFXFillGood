@@ -19,48 +19,53 @@ class GameViewController: UIViewController {
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            self.scene = scene
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                self.gameScene = sceneNode
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-//                    view.showsFPS = true
-//                    view.showsNodeCount = true
-                }
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.gameScene?.viewWillAppear()
-        self.gameScene?.isPaused = false
+        if (self.gameScene == nil) {
+            if let scene = GKScene(fileNamed: "GameScene") {
+                self.scene = scene
+                
+                // Get the SKScene from the loaded GKScene
+                if let sceneNode = scene.rootNode as! GameScene? {
+                    self.gameScene = sceneNode
+                    
+                    // Copy gameplay related content over to the scene
+                    sceneNode.entities = scene.entities
+                    sceneNode.graphs = scene.graphs
+                    
+                    // Set the scale mode to scale to fit the window
+                    sceneNode.scaleMode = .aspectFill
+                    
+                    // Present the scene
+                    if let view = self.view as! SKView? {
+                        view.presentScene(sceneNode)
+                        
+                        view.ignoresSiblingOrder = true
+                        
+                        //                    view.showsFPS = true
+                        //                    view.showsNodeCount = true
+                    }
+                }
+            }
+        }
         
-        print("viewwillappear")
+        self.gameScene?.ready()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.gameScene?.clearUnit()
-        self.gameScene?.isPaused = true
-
-        TileData.shared.initializeStartPoint()
-        print("viewWillDisappear")
+        if (self.gameScene == nil) {
+            return
+        }
+        
+        self.gameScene?.paused()
+        if let view = self.view as! SKView? {
+            self.gameScene?.removeFromParent()
+            view.presentScene(nil)
+            self.gameScene = nil
+        }
     }
     
     func changedTileCount(row: Int, col: Int) {
@@ -69,7 +74,7 @@ class GameViewController: UIViewController {
         TileData.shared.col = col
         TileData.shared.tiles = Array(repeating: Array(repeating: 1, count:col), count: row)
         
-        self.gameScene?.viewWillAppear()
+        self.gameScene?.ready()
     }
 
     override var shouldAutorotate: Bool {

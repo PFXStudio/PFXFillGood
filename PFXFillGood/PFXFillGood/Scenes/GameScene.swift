@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
-    private var lastUpdateCompleteTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
 
@@ -25,15 +24,18 @@ class GameScene: SKScene {
 
     override func sceneDidLoad() {
 
+        print("\(#function), \(#line)")
         self.lastUpdateTime = 0
         self.backgroundColor = UIColor.white
     }
     
-    override func didMove(to view: SKView) {
-        self.viewWillAppear()
-    }
+//    override func didMove(to view: SKView) {
+//        print("\(#function), \(#line)")
+//        self.ready()
+//    }
     
-    func viewWillAppear() {
+    func ready() {
+        print("\(#function), \(#line)")
         let size = CGSize(width: 50, height: 50)
         guard let groundTileSet = SKTileSet(named: "Ground Tiles") else {
             fatalError("groundTileSet not found")
@@ -89,6 +91,16 @@ class GameScene: SKScene {
                 }
             }
         }
+        
+        self.isPaused = false
+        if TileData.shared.paths.count <= 0 {
+            return
+        }
+
+        if GameStatus.shared.isKind(of: CompleteStatus.self) == false {
+            print(">>>completeStatus \(#function), \(#line)")
+            GameStatus.shared = CompleteStatus()
+        }
     }
     
     func clearUnit() {
@@ -103,6 +115,10 @@ class GameScene: SKScene {
     }
     
     func clearTile() {
+        if (self.tileMap == nil) {
+            return
+        }
+        
         for row in 0..<TileData.shared.row {
             for col in 0..<TileData.shared.col {
                 self.tileMap.setTileGroup(nil, forColumn: col, row: row)
@@ -122,34 +138,32 @@ class GameScene: SKScene {
         // Called before each frame is rendered
         
         // Initialize _lastUpdateTime if it has not already been
+        // Update entities
+        // Calculate time since last update
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
-        
-        // Calculate time since last update
+
         let dt = currentTime - self.lastUpdateTime
-        
-        // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
         
         self.lastUpdateTime = currentTime
-        
         if TileData.shared.paths.count <= 0 {
             return
         }
         
-        if currentTime - 0.5 < self.lastUpdateCompleteTime {
-            return
+        if GameStatus.shared.isKind(of: CompleteStatus.self) == true {
+            GameStatus.shared.showCompleted(currentTime, scene: self, unitMap: self.unitMap, arrowMap: self.arrowMap)
         }
+    }
+    
+    func paused() {
+        self.clearUnit()
+        self.isPaused = true
         
-        self.lastUpdateCompleteTime = currentTime
-        if GameStatus.shared.isKind(of: CompleteStatus.self) == false {
-            GameStatus.shared = CompleteStatus()
-        }
-        
-        GameStatus.shared.showCompleted(scene: self, unitMap: self.unitMap, arrowMap: self.arrowMap)
+        TileData.shared.initializeStartPoint()
     }
 
     func touchMoved(toPoint pos : CGPoint) {

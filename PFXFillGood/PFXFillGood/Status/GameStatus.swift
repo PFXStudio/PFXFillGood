@@ -16,8 +16,7 @@ class GameStatus: NSObject {
         return
     }
     
-    func showCompleted(scene: SKScene, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
+    func showCompleted(_ currentTime: TimeInterval, scene: SKScene, unitMap: SKTileMapNode, arrowMap: SKTileMapNode) {
         return
-
     }
 }

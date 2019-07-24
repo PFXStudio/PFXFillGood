@@ -35,10 +35,6 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
         return interstitial
     }
     
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        interstitial = createAndLoadInterstitial()
-    }
-    
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
         TileData.shared.paths = self.results!
     }
@@ -236,6 +232,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
                     // 광고 로딩 실패!
                     self.results = pointPaths
                     TileData.shared.paths = pointPaths
+                    self.gameViewController?.viewWillAppear(false)
                 }
             })
         }
