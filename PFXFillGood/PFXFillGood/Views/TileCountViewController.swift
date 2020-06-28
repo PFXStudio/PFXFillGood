@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TileCountViewController: UIViewController {
 
@@ -35,6 +36,7 @@ class TileCountViewController: UIViewController {
     
     func showGuide() {
         let viewController = UIStoryboard.init(name: "Guide", bundle: nil) .instantiateViewController(withIdentifier: "GuideViewController")
+        viewController.modalPresentationStyle = .fullScreen
         self .present(viewController, animated: false, completion: nil)
         
         UserDefaults.standard.set(true, forKey: DefineStrings.kCompletedGuide)

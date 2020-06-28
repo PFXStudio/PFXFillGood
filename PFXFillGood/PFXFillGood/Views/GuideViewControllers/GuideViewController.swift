@@ -10,6 +10,7 @@ import UIKit
 import StoreKit
 import paper_onboarding
 import ProgressHUD
+import ConcentricOnboarding
 
 class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate, SKStoreProductViewControllerDelegate {
 
@@ -73,9 +74,9 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         let bottomImage: UIImage = UIImage(named: "iconMore")!
-        let guide1Image: UIImage = UIImage(named: "guide-1")!
-        let guide2Image: UIImage = UIImage(named: "guide-2")!
-        let guide3Image: UIImage = UIImage(named: "guide-3")!
+        let guide1Image: UIImage = UIImage(named: "guide01")!
+        let guide2Image: UIImage = UIImage(named: "guide02")!
+        let guide3Image: UIImage = UIImage(named: "guide03")!
 
         return [
             OnboardingItemInfo(informationImage: guide1Image,

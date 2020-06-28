@@ -28,7 +28,7 @@ class StartViewController: UIViewController, GADInterstitialDelegate {
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6807878951364224/2401371946")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6807878951364224/7374673629")
         interstitial.delegate = self
         let request = GADRequest()
         interstitial.load(request)

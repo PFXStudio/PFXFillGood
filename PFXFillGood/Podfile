@@ -9,7 +9,8 @@ target 'PFXFillGood' do
   pod 'ProgressHUD'
   pod 'paper-onboarding'
   pod 'Google-Mobile-Ads-SDK'
-
+  pod 'ConcentricOnboarding'
+  
   target 'PFXFillGoodTests' do
     inherit! :search_paths
     # Pods for testing

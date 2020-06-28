@@ -27,7 +27,7 @@ class BottomBannerViewController: UIViewController {
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-6807878951364224/8418672303"
+        bannerView.adUnitID = "ca-app-pub-6807878951364224/3383457723"
         bannerView.rootViewController = self
         let request = GADRequest()
         bannerView.load(request)
