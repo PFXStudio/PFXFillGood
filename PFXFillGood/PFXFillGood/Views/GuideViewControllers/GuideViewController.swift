@@ -73,7 +73,7 @@ class GuideViewController: UIViewController, PaperOnboardingDataSource, PaperOnb
     }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
-        let bottomImage: UIImage = UIImage(named: "iconMore")!
+        let bottomImage: UIImage = UIImage(named: "iconPivot")!
         let guide1Image: UIImage = UIImage(named: "guide01")!
         let guide2Image: UIImage = UIImage(named: "guide02")!
         let guide3Image: UIImage = UIImage(named: "guide03")!
